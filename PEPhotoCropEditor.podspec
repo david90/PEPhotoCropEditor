@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name                  = "PEPhotoCropEditor"
   s.version               = "1.3.2"
   s.summary               = "Image cropping library for iOS, similar to the Photos.app UI. Edited by david90"
-  s.homepage              = "https://github.com/kishikawakatsumi/PEPhotoCropEditor"
+  s.homepage              = "https://github.com/david90/PEPhotoCropEditor"
   s.social_media_url      = "https://twitter.com/k_katsumi"
   s.license               = { :type => "MIT", :file => "LICENSE" }
   s.author                = { "kishikawa katsumi" => "kishikawakatsumi@mac.com" }
