@@ -67,13 +67,15 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 
 - (void)loadView
 {
-    UIView *contentView = [[UIView alloc] init];
-    contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    contentView.backgroundColor = [UIColor blackColor];
-    self.view = contentView;
-    
-    self.cropView = [[PECropView alloc] initWithFrame:contentView.bounds];
-    [contentView addSubview:self.cropView];
+    if([self useDefaultView]) {
+        UIView *contentView = [[UIView alloc] init];
+        contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        contentView.backgroundColor = [UIColor blackColor];
+        self.view = contentView;
+        
+        self.cropView = [[PECropView alloc] initWithFrame:contentView.bounds];
+        [contentView addSubview:self.cropView];
+    }
 }
 
 - (void)viewDidLoad
