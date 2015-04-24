@@ -115,7 +115,7 @@
         
         if (self.showsGridMajor) {
             if (i > 0) {
-                [[UIColor whiteColor] set];
+                [[UIColor colorWithRed:0 green:0.478 blue:1 alpha:1] set];
                 
                 UIRectFill(CGRectMake(roundf(width / 3 * i), borderPadding, 1.0f, roundf(height) - borderPadding * 2));
                 UIRectFill(CGRectMake(borderPadding, roundf(height / 3 * i), roundf(width) - borderPadding * 2, 1.0f));
@@ -176,10 +176,13 @@
 
 - (void)resizeControlViewDidResize:(PEResizeControl *)resizeControlView
 {
-    self.frame = [self cropRectMakeWithResizeControlView:resizeControlView];
+    if (self.canResizeByEdge) {
+        self.frame = [self cropRectMakeWithResizeControlView:resizeControlView];
         
-    if ([self.delegate respondsToSelector:@selector(cropRectViewEditingChanged:)]) {
-        [self.delegate cropRectViewEditingChanged:self];
+        
+        if ([self.delegate respondsToSelector:@selector(cropRectViewEditingChanged:)]) {
+            [self.delegate cropRectViewEditingChanged:self];
+        }
     }
 }
 

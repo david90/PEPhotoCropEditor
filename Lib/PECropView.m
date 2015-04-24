@@ -249,6 +249,11 @@ static const CGFloat MarginLeft = 20.0f;
     [self setCropAspectRatio:aspectRatio andCenter:YES];
 }
 
+-(void)setCanResizeByEdge:(BOOL)canResizeByEdge {
+    _canResizeByEdge = canResizeByEdge;
+    [self.cropRectView setCanResizeByEdge:canResizeByEdge];
+}
+
 - (CGFloat)cropAspectRatio
 {
     CGRect cropRect = self.scrollView.frame;
@@ -429,11 +434,11 @@ static const CGFloat MarginLeft = 20.0f;
 
 - (void)cropRectViewEditingChanged:(PECropRectView *)cropRectView
 {
-    CGRect cropRect = [self cappedCropRectInImageRectWithCropRectView:cropRectView];
-    
-    [self layoutCropRectViewWithCropRect:cropRect];
-    
-    [self automaticZoomIfEdgeTouched:cropRect];
+    if(self.canResizeByEdge){
+        CGRect cropRect = [self cappedCropRectInImageRectWithCropRectView:cropRectView];
+        [self layoutCropRectViewWithCropRect:cropRect];
+        [self automaticZoomIfEdgeTouched:cropRect];
+    }
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView
