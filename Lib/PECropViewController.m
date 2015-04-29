@@ -75,6 +75,8 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         
         self.cropView = [[PECropView alloc] initWithFrame:contentView.bounds];
         [contentView addSubview:self.cropView];
+    } else {
+        [super loadView];
     }
 }
 
