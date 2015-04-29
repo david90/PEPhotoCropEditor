@@ -64,21 +64,21 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 }
 
 #pragma mark -
-
-- (void)loadView
-{
-    if([self useDefaultView]) {
-        UIView *contentView = [[UIView alloc] init];
-        contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        contentView.backgroundColor = [UIColor blackColor];
-        self.view = contentView;
-        
-        self.cropView = [[PECropView alloc] initWithFrame:contentView.bounds];
-        [contentView addSubview:self.cropView];
-    } else {
-        [super loadView];
-    }
-}
+//
+//- (void)loadView
+//{
+//    if([self useDefaultView]) {
+//        UIView *contentView = [[UIView alloc] init];
+//        contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//        contentView.backgroundColor = [UIColor blackColor];
+//        self.view = contentView;
+//        
+//        self.cropView = [[PECropView alloc] initWithFrame:contentView.bounds];
+//        [contentView addSubview:self.cropView];
+//    } else {
+//        [super loadView];
+//    }
+//}
 
 - (void)viewDidLoad
 {
