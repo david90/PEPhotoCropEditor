@@ -128,8 +128,11 @@ static const CGFloat MarginLeft = 20.0f;
     if (!self.image) {
         return;
     }
-    
+#if !(defined(__has_feature) && __has_feature(attribute_availability_app_extension))
     UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+#else
+    UIInterfaceOrientation interfaceOrientation = UIInterfaceOrientationPortrait;
+#endif
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
         self.editingRect = CGRectInset(self.bounds, MarginLeft, MarginTop);
     } else {
@@ -334,7 +337,11 @@ static const CGFloat MarginLeft = 20.0f;
     CGSize size = self.image.size;
     
     CGFloat ratio = 1.0f;
+#if !(defined(__has_feature) && __has_feature(attribute_availability_app_extension))
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+#else
+    UIInterfaceOrientation orientation = UIInterfaceOrientationPortrait;
+#endif
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || UIInterfaceOrientationIsPortrait(orientation)) {
         ratio = CGRectGetWidth(AVMakeRectWithAspectRatioInsideRect(self.image.size, self.insetRect)) / size.width;
     } else {

@@ -227,6 +227,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 
 - (void)constrain:(id)sender
 {
+#if !(defined(__has_feature) && __has_feature(attribute_availability_app_extension))
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                    delegate:self
                                           cancelButtonTitle:PELocalizedString(@"Cancel", nil)
@@ -242,6 +243,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
                         PELocalizedString(@"8 x 10", nil),
                         PELocalizedString(@"16 x 9", nil), nil];
     [self.actionSheet showFromToolbar:self.navigationController.toolbar];
+#endif
 }
 
 #pragma mark -
